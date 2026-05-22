@@ -19,14 +19,17 @@ const Footer = () => {
       border-borderColor border-b"
       >
         <div>
-          <motion.img
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            src={assets.logo}
-            alt="logo"
-            className="h-12 md:h-14"
-          />
+          <div className="flex items-center gap-2">
+            <motion.img
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              src={assets.logo}
+              alt="logo"
+              className="h-12 md:h-14"
+            />
+            <span className="text-xl font-bold text-gray-800">Car Rental</span>
+          </div>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
