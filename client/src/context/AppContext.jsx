@@ -58,6 +58,24 @@ export const AppProvider = ({ children }) => {
     const token = localStorage.getItem("token");
     setToken(token);
     fetchCars();
+
+    const interceptor = axios.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response?.data?.message) {
+          error.message = error.response.data.message;
+        }
+        if (error.response?.status === 401) {
+          if (localStorage.getItem("token")) {
+            logOut();
+          }
+          return new Promise(() => {});
+        }
+        return Promise.reject(error);
+      }
+    );
+
+    return () => axios.interceptors.response.eject(interceptor);
   }, []);
 
   //useEffect to fetch user data when  token is availiable
