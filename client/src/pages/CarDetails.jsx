@@ -180,13 +180,19 @@ const CarDetails = () => {
               className="border border-borderColor px-3 py-2 rounded-lg"
             />
           </div>
-          <button
-            className="w-full bg-primary hover:bg-primary-dull 
-            transition-all py-3 font-medium text-white rounded-xl
-            cursor-pointer"
-          >
-            Book Now
-          </button>
+          {user && user._id === car.owner ? (
+            <div className="w-full bg-gray-100 text-gray-500 py-3 text-center rounded-xl font-medium">
+              This is your car
+            </div>
+          ) : (
+            <button
+              className="w-full bg-primary hover:bg-primary-dull 
+              transition-all py-3 font-medium text-white rounded-xl
+              cursor-pointer"
+            >
+              Book Now
+            </button>
+          )}
           <p className="text-center text-sm ">
             NO credit Card required to reserve
           </p>
