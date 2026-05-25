@@ -6,9 +6,6 @@ import Loader from "../components/Loader";
 import { useAppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
 import { motion } from "motion/react";
-import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_dummy');
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -35,17 +32,11 @@ const CarDetails = () => {
         pickupDate,
         returnDate,
       });
-      if (data.success) {
-        // Redirect to Stripe checkout
-        const stripe = await stripePromise;
-        const result = await stripe.redirectToCheckout({
-          sessionId: data.sessionId,
-        });
-        if (result.error) {
-          toast.error(result.error.message);
-        }
+      if (data.success && data.url) {
+        // Redirect to Stripe-hosted checkout page
+        window.location.href = data.url;
       } else {
-        toast.error(data.message);
+        toast.error(data.message || "Failed to create checkout session");
       }
     } catch (error) {
       toast.error(error.message);

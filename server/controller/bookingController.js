@@ -126,7 +126,7 @@ export const createCheckoutSession = async (req, res) => {
       cancel_url: `http://localhost:5173/car-details/${car}`,
     });
 
-    res.json({ success: true, sessionId: session.id });
+    res.json({ success: true, sessionId: session.id, url: session.url });
   } catch (error) {
     console.log(error.message);
     res.json({ success: false, message: error.message });
