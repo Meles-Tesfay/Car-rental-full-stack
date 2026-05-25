@@ -17,6 +17,26 @@
       "destination": "server/server.js"
     },
     {
+      "source": "/success",
+      "destination": "/client/index.html"
+    },
+    {
+      "source": "/cars",
+      "destination": "/client/index.html"
+    },
+    {
+      "source": "/car-details/(.*)",
+      "destination": "/client/index.html"
+    },
+    {
+      "source": "/my-bookings",
+      "destination": "/client/index.html"
+    },
+    {
+      "source": "/owner/(.*)",
+      "destination": "/client/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/client/$1"
     }
