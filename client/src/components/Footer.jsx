@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 const Footer = () => {
   return (
-    <motion.div
+    <motion.div role="contentinfo"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
